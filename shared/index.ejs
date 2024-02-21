@@ -1,0 +1,52 @@
+<%- include("partials/header.ejs") %>
+
+
+<div class="container">
+
+    <h1>Welcome to your personal blog</h1>
+
+    <div class="user-input">
+        <h2></h2>
+        <form action="/" method="POST">
+            <input type="text" name="title" placeholder="Title" class="title-input">
+            <br>
+            <input type="text" name="blog" placeholder="Blog" class="text-input">
+            <input type="submit" value="Post" class="sub-button">
+            
+        </form>
+    </div>
+
+
+
+    <div class="user-logs">
+        <h2>Your logs</h2>
+
+        
+        <% if(locals.data && locals.data.log) { %>
+
+            
+                <% for(var i = 0; i < logs.length; i ++){ %>
+                    
+                    
+                        <div class="head">
+                            <h3><%= titles[i] %></h3>
+                            <a href="/edit-post/<%= i %>"  class="edit btn">...</a>
+                            <form action="/delete-post/<%= i %>" >
+                                <input type="submit" value="Delete" class="btn">
+                            </form>
+                        </div>
+                        <div class="log-post">
+                            <p data-post-id="<%= i%>"><%= logs[i] %></p>
+                        </div>                        
+                   
+            <% } %>
+        <% } else{ %>
+            <p class="pls">Please Create blog 🫶🏼</p> 
+            <% } %>
+            </ul>
+    </div>
+    
+</div>
+
+
+<%- include("partials/footer.ejs") %>
