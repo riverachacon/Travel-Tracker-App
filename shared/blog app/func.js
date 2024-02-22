@@ -11,7 +11,7 @@ $(".delete").on('click', function(x){
         data: {blogId: postId},
         success: function (result){
             alert("post deleted")
-            selectedPost.remove();
+            window.location.href="/"
 
         },
         error: function(err){

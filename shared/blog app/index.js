@@ -27,9 +27,9 @@ app.post("/delete", (req, res) => {
     var id = req.body.blogId
     console.log(id)
     var newPosts = []
-    for(var e = 0; e < logs.length; e++){
-        if(logs[e].id !== parseInt(id)){
-            newPosts.push(logs[e])
+    for(var e = 0; e < posts.logs.length; e++){
+        if(posts.logs[e].id !== parseInt(id)){
+            newPosts.push(posts.logs[e])
         }
     }
     posts = newPosts
@@ -49,8 +49,8 @@ app.post("/",(req, res) => {
     posts.titles.push(data.blogTitle)
     
     
-    console.log(titles.slice(-1), logs.slice(-1)) // to access last item from array .slice(-1)
-    res.render("index.ejs", {data, logs, titles})
+    console.log(posts.titles.slice(-1), posts.logs.slice(-1)) // to access last item from array .slice(-1)
+    res.render("index.ejs", {data, posts})
 })
 
 
