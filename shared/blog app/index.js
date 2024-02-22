@@ -32,7 +32,7 @@ app.post("/delete", (req, res) => {
             newPosts.push(logs[e])
         }
     }
-    logs = newPosts
+    posts = newPosts
     res.json({result: "post deleted"})
 
 })
