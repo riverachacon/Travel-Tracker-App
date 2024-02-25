@@ -21,18 +21,16 @@
         <h2>My logs</h2>
 
         <% if(locals.data && locals.data.log){ %>
-                <% for(var i =0; i < posts.logs.length; i++){ %>
+                <% for(var i =0; i < posts.length; i++){ %>
 
-                    <div class="card" style="width: 18rem;">
-                        <div id="<%= i%>" class="card-body">
-                            <h5 ><%= posts.titles[i] %></h5>
-                            <p ><%= posts.logs[i] %></p>
+                    <div id="<%= i%>" class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 ><%= posts[i].blogTitle %></h5>
+
+                            <p ><%= posts[i].log %></p>
                             <button type="button" class="btn btn-danger delete">delete</button>
                         </div>
                     </div>
-
-
-                
 
 
                 <% } %>

@@ -5,10 +5,12 @@ const app = express();
 const port = 3000
 
 
-var posts = {
-    logs: [],
-    titles: []
-}
+var posts = []
+
+// var posts = {
+//     logs: [],
+//     titles: []
+// }
 
 app.use(bodyParser.urlencoded({ extended: true })); /* to be able to use req.body to access users input */
 
@@ -24,16 +26,15 @@ app.get("/", (req, res) => {
 
 //delete posts
 app.post("/delete", (req, res) => {
-    var id = req.body.blogId
+    var id = req.body.blogId // id = div id
     console.log(id)
     var newPosts = []
-    for(var e = 0; e < posts.logs.length; e++){
-        if(posts.logs[e].id !== parseInt(id)){
-            newPosts.push(posts.logs[e])
+    for(var e = 0; e< posts.length; e++){
+        if(posts[e] !== parseInt(id)){
+            newPosts.push(posts[e])
         }
     }
     posts = newPosts
-    res.json({result: "post deleted"})
 
 })
 
@@ -44,17 +45,15 @@ app.post("/",(req, res) => {
     var data = {
         blogTitle: req.body.title,
         log: req.body.blog
+        
     }
-    posts.logs.push(data.log)
-    posts.titles.push(data.blogTitle)
+    posts.push(data)
     
+    console.log(posts)
+
     
-    console.log(posts.titles.slice(-1), posts.logs.slice(-1)) // to access last item from array .slice(-1)
     res.render("index.ejs", {data, posts})
 })
-
-
-
 
 
 
