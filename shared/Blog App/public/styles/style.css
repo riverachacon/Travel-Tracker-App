@@ -166,6 +166,7 @@ footer {
     background: #fdf0d5;
     /* color: #3B3486; */
     font-size: 16px;
+    color: #003049;
 
     border-radius: 40px;
 }
@@ -177,6 +178,8 @@ footer {
 
 .edit-btn, .edit-btn{
     background-color: #edf2f4;
+    color: #003049;
+
 }
 
 
