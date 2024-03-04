@@ -1,0 +1,19 @@
+<%- include("partials/header.ejs") %>
+
+
+<div class="user-update">
+    <h2></h2>
+    <form action="/" method="POST">
+        
+        <textarea name="titleEdit" id="" cols="20" class="title-input" rows="2"><%= currentPost.blogTitle %></textarea><br><br>
+        
+        <textarea name="logEdit" id="" cols="30" class="text-input" rows="5"><%= currentPost.log %></textarea><br><br>
+        
+        <input type="hidden" name="id" value=<%=locals.id%>>
+
+        <input type="submit" class="update-btn btn" value="Update" >
+        
+    </form>
+</div>
+
+<%- include("partials/footer.ejs") %>

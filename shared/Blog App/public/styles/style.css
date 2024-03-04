@@ -1,0 +1,261 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 16px;
+}
+
+body {
+    background: #003049;
+    color: #faf3dd;
+    height: 100vh; /* for nav bar*/
+    /*background-image: url('https://static01.nyt.com/images/2019/12/23/nyregion/00nylights1/00nylights1-superJumbo.jpg');
+    
+    /*background-size: cover; to fit screen 
+    
+    background-position: center;*/
+
+}
+
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none; /*to remove text-underline from links*/
+    color: #faf3dd;
+    font-size: 1rem;
+}
+a:hover{
+    text-decoration: underline;
+    color: #faedcdad;
+
+}
+
+header{
+    position: relative;
+    padding: 0 2rem;
+}
+
+.nav-bar{
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-bar .logo a{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-bar .links{
+    display: flex;
+    gap: 2rem;
+}
+.links li:nth-child(3) a, .dropdown li:nth-child(3) a{
+    color: #F3AA60;
+    scale: 1.1;
+}
+
+
+
+.nav-bar .toggle-btn{
+    color: #faedcd;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+
+
+.container, .contact, .about{
+
+    /* height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+
+
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 0 10px;
+    padding-bottom: 20px; 
+}
+
+.logs{
+    margin-top: 35px;
+}
+
+h1{
+    margin-bottom: 20px;
+}
+
+h2{
+    padding-bottom: 15px;
+}
+p{
+    padding-bottom: 8px;
+}
+
+h3{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    
+}
+
+
+
+
+.text-input, .user-update
+.title-input {
+    border-radius: 20px; 
+    padding: 8px 10px;
+    
+}
+.text-input::placeholder,
+.title-input::placeholder {
+    padding-left: 8px; 
+}
+
+.blogs-body{
+    margin-bottom: 20px;
+}
+
+.blogs-body{
+    border: 1px solid #faedcd;
+    font-family: "Kode Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-bottom: 20px;
+}
+
+/* li{
+    font-size: 20px;
+    color: #faedcd;
+} */
+
+footer {
+
+
+    bottom: 0;
+    left: 15px; 
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.btn{
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.post-btn, .update-btn {
+    padding: 10px 20px; 
+    font-size: 16px; 
+    background: #fdf0d5;
+    /* color: #3B3486; */
+    font-size: 16px;
+
+    border-radius: 40px;
+}
+.post-btn:hover, .update-btn:hover {
+
+    background: #faedcdad;
+
+}
+
+.edit-btn, .edit-btn{
+    background-color: #edf2f4;
+}
+
+
+.delete-btn{
+    background-color: #f44336;
+    color: #fdf0d5;
+}
+.edit-btn, .delete-btn{
+    padding: 5px 10px; 
+    font-size: 12px; 
+     
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.edit-btn:hover {
+  background-color: #fdf0d5; 
+}
+.delete-btn:hover{
+    background-color: #780000
+}
+
+
+.user-update {
+    width: 50%; 
+    margin: 0 auto; 
+}
+
+.pls{
+    font-size: 26px;
+}
+
+
+/* DROPDOWN */
+.dropdown{
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    height: 0;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown.open{
+    height: 140px;
+}
+
+.dropdown li{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/*responsive*/
+@media (max-width: 992px){
+    .nav-bar .links,
+    .links li:nth-child(3) a{
+        display: none;
+    }
+    .nav-bar .toggle-btn{
+        display: block;
+    }
+    .dropdown{
+        display: block;
+    }
+
+}
+
+@media (max-width: 576px){
+    .dropdown{
+        left: 2rem;
+        width: unset;
+    }
+
+}
