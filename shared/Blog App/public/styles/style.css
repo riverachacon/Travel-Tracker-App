@@ -217,7 +217,7 @@ footer {
     top: 60px;
     height: 0;
     width: 300px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.999);
     backdrop-filter: blur(15px);
     border-radius: 10px;
     overflow: hidden;
