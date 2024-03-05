@@ -58,7 +58,7 @@ header{
     display: flex;
     gap: 2rem;
 }
-.links li:nth-child(3) a, .dropdown li:nth-child(3) a{
+.links li:nth-child(3) a, .dropdown li:nth-child(3) a, .page1{
     color: #F3AA60;
     scale: 1.1;
 }
