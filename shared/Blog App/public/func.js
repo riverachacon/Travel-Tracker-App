@@ -31,3 +31,15 @@ $("input[type='submit']").on("click", (event) => {
   }
 });
 
+
+
+$("input[type='submit']").on("click", (event) => {
+  if ($(".title-input").val() === "") {
+    alert("Please enter a Title to your blog");
+    event.preventDefault(); // Stop form submission
+  }
+  if ($(".text-input").val() === "") {
+    alert("Please enter text to your blog");
+    event.preventDefault(); // Stop form submission
+  }
+});
