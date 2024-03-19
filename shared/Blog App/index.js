@@ -8,8 +8,9 @@ const port = 3000
 const posts = []
 
 /* var posts = {
-        logs: [],
-        titles: []
+    id: [],
+    logs: [],
+    titles: []
     }
 */
 
@@ -24,52 +25,75 @@ app.get("/", (req, res) => {
 })
 
 
-
+/* New post */
 app.post("/",(req, res) => {
+    var id = parseInt(req.body.edit)
 
     
     
     var inputs = {
+        id: posts.length +1,
         blogTitle: req.body.title,
         log: req.body.blog 
     }
-    if(inputs.blogTitle !== undefined && inputs.log !== undefined){
-        posts.push(inputs)
-        
-    }
+    posts.push(inputs)
+    
 
-    var id = req.body.id
-    var newTitle = req.body.titleEdit
-    var newLog = req.body.logEdit
-    if(newLog !== undefined && newTitle !== undefined){
-        posts[id].log = newLog
-        posts[id].blogTitle =  newTitle
-    
-    }
-    
-    
     // console.log(posts)
-    // console.log(`inputs: ${inputs.blogTitle}, ${inputs.log}`)
-    // console.log(`new inputs: ${newLog}, ${newTitle}`)
-    
-    
     res.render("index.ejs", {data: posts})
 })
 
 
-app.post("/blogs", (req,res) =>{
-    
-    //position in array to edit
-    var editPos = req.body.edit
-    // post to edit
-    var postEdit = posts[editPos]
-    res.render("blogs.ejs", {currentPost: postEdit, id: editPos})
+/* direct to blogs.ejs for edition */
+app.post("/blogs", (req, res) => {
+
+    var id = parseInt(req.body.edit)
+    const selectedPostPosition = posts.findIndex((x)=> x.id === id); //findIndex is to get position of post to edit in the array
+    var postToEdit = posts[selectedPostPosition]
+
+    // console.log("ID: ", id)
+    // console.log("Position of post to edit: ", selectedPostPosition)
+    // console.log("Post to edit: ", postToEdit)
+    // console.log("Posts: ", posts)
+
+    res.render("blogs.ejs", {currentPost: postToEdit, iden: id, posts: posts})
 })
 
-app.post("/delete", (req, res) => {
-    // position of post to delete
-    var deletePos = req.body.delete
-    posts.splice(deletePos, 1)
+/* EDIT POST */
+app.post("/update/:id", (req, res) => {
+    var id = parseInt(req.params.id)
+    //const selectedPost = posts.find((x) => x.id === id)
+    const selectedPostPosition = posts.findIndex((x)=> x.id === id);
+
+    var newInputs = {
+        id: id,
+        blogTitle: req.body.title || req.body.titleEdit,
+        log: req.body.blog || req.body.blogEdit
+    }
+
+    posts[selectedPostPosition] = newInputs
+
+    // console.log("New input: ", newInputs)
+    // console.log("ID: ", id)
+    // console.log("Position of post: ", selectedPostPosition)
+
+
+    res.redirect("/")
+})
+
+
+
+
+
+/* DELETE POST */
+app.post("/delete/:id", (req, res) => {
+    var id = parseInt(req.params.id)
+    const selectedPost = posts.findIndex((x) => x.id === id)// position in array
+   
+    // console.log("id: ", id)
+    // console.log("selected post: ", selectedPost)
+    posts.splice(selectedPost, 1)
+
     res.redirect("/")
 })
 
