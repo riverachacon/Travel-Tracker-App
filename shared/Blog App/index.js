@@ -87,11 +87,17 @@ app.post("/update/:id", (req, res) => {
 /* DELETE POST */
 app.post("/delete/:id", (req, res) => {
     var id = parseInt(req.params.id)
-    const selectedPost = posts.findIndex((x) => x.id === id)// position in array
+    const selectedPostPosition = posts.findIndex((x) => x.id === id)// position in array
    
+    if(selectedPostPosition >= 0 ){
+        posts.splice(selectedPostPosition, 1)
+
+      } else{
+        res.status(404).json({ error: "Post not found" });
+      }
     // console.log("id: ", id)
     // console.log("selected post: ", selectedPost)
-    posts.splice(selectedPost, 1)
+    
 
     res.redirect("/")
 })
