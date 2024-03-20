@@ -27,7 +27,6 @@ app.get("/", (req, res) => {
 
 /* New post */
 app.post("/",(req, res) => {
-    var id = parseInt(req.body.edit)
 
     
     
