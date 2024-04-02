@@ -104,8 +104,10 @@ app.post("/add", async(req, res) => {
     }
     
   } catch (err) {
-    console.log("E R R O R 2: ",err)
-    console.log("INPUT COUNTRY CODE: ", data)
+    let totalCountries =  await visited()
+    console.log("TOTAL: ", totalCountries) 
+    console.log("E R R O R: ",err)
+    res.render("index.ejs", {error: "Please specify the country again", total:  totalCountries.length, countries: totalCountries})
 
   }
 
